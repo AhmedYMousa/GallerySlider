@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+html,
+body {
+
+	font-family: "Raleway",sans-serif;
+	height: 100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
+/*P.S: When setting the height and width of an element to the same size of the body,
+ any other element placed in the HTML structure below that element will be excluded from the body tag .
+ use Dev tools in the browser to verify it.
+
+ To solve this issue use vh units in the height property,vh is short for "Viewport Height"*/
+
+#container {
+	height: 100%;
+	width:100%;
+	position: relative;
+	overflow: hidden;
+	background-color: #777;
+	color: #FFF;
+	text-align: center;
+
+}
+
+header {
+	background-color: #666;
+	box-shadow: 0 0.5em 1em rgba(51,51,51,0.5);
+	position: absolute;
+	top:0;
+	left: 0;
+	z-index: 900;
+	width: 100%;
+}
+
+header label {
+	color:#ffe;
+	cursor:pointer;
+	display: inline-block;
+	line-height: 4em;
+	padding:0 1em;
+}
+
+header label:hover {
+	background-color: #777;
+}
+
+.slide h1 {
+	font-size: 60px;
+	color: #777;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: transform 0.5s 0.5s,opacity 0.5s;
+}
+
+
+
+.slide {
+	height:100%;
+	width:100%;
+	position: absolute;
+	top:0;
+	left: 100%;
+	z-index: 10;
+	padding: 8em 1em 0;
+	background-position: 50% 50%;
+	background-size: cover;
+	transition: left 0s 0.5s;
+}
+
+.slide-one { background-image: url('images/1.jpg');}
+.slide-two { background-image: url('images/2.jpg');}
+.slide-three { background-image: url('images/3.jpg');}
+.slide-four { background-image: url('images/4.jpg');}
+
+[id^="slide"]:checked + .slide {
+	left:0;
+	z-index: 100;
+	transition: left 0.65s ease-out;
+
+}
+[id^="slide"]:checked + .slide h1 {
+	opacity: 1;
+	transform: translateY(0);
+	transition: all 0.5s 0.5s;
+}
